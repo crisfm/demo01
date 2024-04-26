@@ -12,7 +12,7 @@ pipeline {
     }
     stages {
           stage('stop/rm') {
-            echo name_final
+            echo ${name_final}
             echo "**************************"
             when {
                 expression { 
