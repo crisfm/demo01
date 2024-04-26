@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                git 'https://tu-repositorio.git'
+            }
+        }
+        
+        stage('Compilar') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        
+        stage('Pruebas Unitarias') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        
+        stage('SonarQube') {
+            steps {
+                withSonarQubeEnv('SonarQube Server Name') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+        
+        stage('Desplegar') {
+            steps {
+                // Aquí iría el paso para desplegar en un entorno de pruebas o producción
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo '¡Pipeline ejecutado exitosamente!'
+        }
+        failure {
+            echo '¡El pipeline ha fallado!'
+        }
+    }
+}
