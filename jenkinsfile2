@@ -22,8 +22,6 @@ pipeline {
             steps {
                 script{
                     sh ''' 
-                         echo ${name_final}
-                         echo "**************************"
                          docker stop ${name_final}
                     '''
                     }
@@ -48,6 +46,9 @@ pipeline {
                 script{
                     sh ''' 
                         docker run -dp ${puerto_imagen}:80 --name ${name_final} ${name_imagen}:${tag_imagen}
+                        echo '***************************'
+
+
  
                     '''
                     }
