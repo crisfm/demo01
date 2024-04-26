@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                echo "********** clonando ************"
+                // echo "********** clonando ************"
                 git 'https://github.com/crisfm/demo01.git'
             }
         }
