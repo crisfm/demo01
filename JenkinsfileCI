@@ -4,18 +4,21 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git 'https://tu-repositorio.git'
+                echo "********** clonando ************"
+                git 'https://github.com/crisfm/demo01.git'
             }
         }
         
         stage('Compilar') {
             steps {
+                echo "********** compilando ************"
                 sh 'mvn clean compile'
             }
         }
         
         stage('Pruebas Unitarias') {
             steps {
+                echo "********** test ************"
                 sh 'mvn test'
             }
         }
@@ -23,6 +26,7 @@ pipeline {
         stage('SonarQube') {
             steps {
                 withSonarQubeEnv('SonarQube Server Name') {
+                    echo "********** onar ************"
                     sh 'mvn sonar:sonar'
                 }
             }
@@ -31,6 +35,7 @@ pipeline {
         stage('Desplegar') {
             steps {
                 // Aquí iría el paso para desplegar en un entorno de pruebas o producción
+                echo "********** desplegando ************"
             }
         }
     }
