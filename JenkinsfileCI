@@ -25,10 +25,10 @@ pipeline {
         
         stage('SonarQube') {
             steps {
-                    // withSonarQubeEnv('SonarQube Server Name') {
-                    echo "********** Sonar ************"
-                    // sh 'mvn sonar:sonar'
-                }
+                   echo "********** Sonar ************" 
+                   // withSonarQubeEnv('SonarQube Server Name') {
+                   // sh 'mvn sonar:sonar'
+                   //}
             }
         }
         
